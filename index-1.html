@@ -1,0 +1,1082 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ÉLANE — Fine Fragrance</title>
+<meta name="description" content="ÉLANE is a fine fragrance house. A scent that stays after you leave.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ivory:#F7F1E8;
+    --ivory-2:#F1E9DC;
+    --plum:#3A1E32;
+    --plum-deep:#2A1524;
+    --plum-mid:#5C3350;
+    --dust:#C9979B;
+    --dust-soft:#E4C9C9;
+    --champagne:#D9C6A0;
+    --ink:#2A1D26;
+    --ink-soft:#6E5D68;
+    --line:rgba(42,29,38,0.14);
+    --line-on-dark:rgba(247,241,232,0.18);
+    --radius:2px;
+    --max:1360px;
+    --ease:cubic-bezier(.22,.61,.36,1);
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--ivory);
+    color:var(--ink);
+    font-family:'Manrope',sans-serif;
+    font-weight:400;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  img{max-width:100%;display:block;}
+  a{color:inherit;text-decoration:none;}
+  button{font-family:inherit;cursor:pointer;}
+  h1,h2,h3,h4{
+    font-family:'Fraunces',serif;
+    font-weight:500;
+    margin:0;
+    letter-spacing:-0.01em;
+    color:var(--plum-deep);
+  }
+  p{margin:0;}
+  .wrap{max-width:var(--max);margin:0 auto;padding:0 6vw;}
+  @media(min-width:1500px){.wrap{padding:0 4vw;}}
+
+  ::selection{background:var(--dust-soft);color:var(--plum-deep);}
+
+  :focus-visible{outline:2px solid var(--plum-mid);outline-offset:3px;}
+
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:0.001ms !important;animation-iteration-count:1 !important;transition-duration:0.001ms !important;scroll-behavior:auto !important;}
+  }
+
+  .eyebrow{
+    font-family:'Manrope',sans-serif;
+    font-size:0.72rem;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--ink-soft);
+    font-weight:600;
+  }
+
+  /* ---------- Buttons ---------- */
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+    padding:15px 30px;
+    font-size:0.92rem;
+    font-weight:600;
+    letter-spacing:0.01em;
+    border-radius:var(--radius);
+    border:1px solid transparent;
+    transition:background .35s var(--ease),color .35s var(--ease),border-color .35s var(--ease);
+    white-space:nowrap;
+  }
+  .btn-primary{
+    background:var(--plum-deep);
+    color:var(--ivory);
+  }
+  .btn-primary:hover{background:var(--plum-mid);}
+  .btn-outline{
+    background:transparent;
+    color:var(--plum-deep);
+    border-color:var(--plum-deep);
+  }
+  .btn-outline:hover{background:var(--plum-deep);color:var(--ivory);}
+  .btn-ghost-light{
+    background:transparent;
+    color:var(--ivory);
+    border-color:var(--line-on-dark);
+  }
+  .btn-ghost-light:hover{border-color:var(--ivory);background:rgba(247,241,232,0.08);}
+  .btn-wide{width:100%;}
+
+  /* ---------- Nav ---------- */
+  header.site{
+    position:fixed;
+    top:0;left:0;right:0;
+    z-index:200;
+    background:rgba(247,241,232,0.86);
+    backdrop-filter:blur(10px);
+    -webkit-backdrop-filter:blur(10px);
+    border-bottom:1px solid transparent;
+    transition:border-color .4s ease, background .4s ease;
+  }
+  header.site.scrolled{border-bottom:1px solid var(--line);}
+  .nav-inner{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    height:78px;
+  }
+  .brand-mark{
+    font-family:'Fraunces',serif;
+    font-size:1.35rem;
+    letter-spacing:0.12em;
+    font-weight:500;
+    color:var(--plum-deep);
+  }
+  nav.primary{display:flex;gap:2.4rem;}
+  nav.primary a{
+    font-size:0.88rem;
+    color:var(--ink);
+    position:relative;
+    padding:4px 0;
+  }
+  nav.primary a::after{
+    content:"";
+    position:absolute;left:0;bottom:0;
+    width:0;height:1px;
+    background:var(--plum-deep);
+    transition:width .3s var(--ease);
+  }
+  nav.primary a:hover::after{width:100%;}
+  .nav-right{display:flex;align-items:center;gap:1.6rem;}
+  .hamburger{
+    display:none;
+    flex-direction:column;
+    gap:5px;
+    background:none;border:none;padding:6px;
+  }
+  .hamburger span{width:22px;height:1.5px;background:var(--plum-deep);transition:transform .3s ease, opacity .3s ease;}
+  .mobile-menu{
+    position:fixed;
+    inset:78px 0 0 0;
+    background:var(--ivory);
+    z-index:190;
+    transform:translateX(100%);
+    transition:transform .4s var(--ease);
+    padding:2.5rem 8vw;
+    display:flex;
+    flex-direction:column;
+    gap:0;
+  }
+  .mobile-menu.open{transform:translateX(0);}
+  .mobile-menu a{
+    font-family:'Fraunces',serif;
+    font-size:1.6rem;
+    padding:1rem 0;
+    border-bottom:1px solid var(--line);
+    color:var(--plum-deep);
+  }
+  .mobile-menu .btn{margin-top:2rem;}
+
+  /* ---------- Hero ---------- */
+  .hero{
+    position:relative;
+    padding:150px 0 90px;
+    background:linear-gradient(180deg,var(--ivory) 0%, var(--ivory-2) 100%);
+    overflow:hidden;
+  }
+  .hero-grid{
+    display:grid;
+    grid-template-columns:1.05fr 0.95fr;
+    gap:5vw;
+    align-items:center;
+  }
+  .hero-copy .eyebrow{margin-bottom:22px;display:block;}
+  .hero-copy h1{
+    font-size:clamp(2.6rem,5.6vw,4.4rem);
+    line-height:1.04;
+    font-weight:400;
+    color:var(--plum-deep);
+  }
+  .hero-copy h1 em{font-style:italic;font-weight:400;color:var(--plum-mid);}
+  .hero-copy p.lead{
+    margin-top:26px;
+    max-width:38ch;
+    font-size:1.06rem;
+    color:var(--ink-soft);
+  }
+  .hero-actions{display:flex;gap:16px;margin-top:40px;flex-wrap:wrap;}
+  .hero-visual{
+    position:relative;
+    aspect-ratio:4/5;
+    border-radius:var(--radius);
+    overflow:hidden;
+    background:var(--plum-deep);
+  }
+  .hero-visual img{
+    width:100%;height:100%;object-fit:cover;
+    transform:scale(1.06);
+  }
+  .hero-visual::after{
+    content:"";
+    position:absolute;inset:0;
+    background:linear-gradient(180deg,rgba(42,21,36,0) 55%,rgba(42,21,36,0.45) 100%);
+  }
+  .hero-visual .tag{
+    position:absolute;
+    left:24px;bottom:24px;
+    color:var(--ivory);
+    font-family:'Fraunces',serif;
+    font-style:italic;
+    font-size:0.98rem;
+    z-index:2;
+  }
+  .hero-stripe{
+    display:flex;
+    gap:3.2rem;
+    margin-top:70px;
+    padding-top:28px;
+    border-top:1px solid var(--line);
+    flex-wrap:wrap;
+  }
+  .hero-stripe div{font-size:0.82rem;color:var(--ink-soft);}
+  .hero-stripe strong{display:block;font-family:'Fraunces',serif;font-size:1.3rem;color:var(--plum-deep);font-weight:500;}
+
+  .reveal{opacity:0;transform:translateY(22px);transition:opacity .8s var(--ease),transform .8s var(--ease);}
+  .reveal.in{opacity:1;transform:translateY(0);}
+
+  /* ---------- Section shell ---------- */
+  section{padding:110px 0;}
+  .section-head{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-end;
+    gap:2rem;
+    margin-bottom:64px;
+    flex-wrap:wrap;
+  }
+  .section-head h2{
+    font-size:clamp(2rem,3.6vw,2.9rem);
+    font-weight:400;
+    max-width:16ch;
+  }
+  .section-head p{max-width:34ch;color:var(--ink-soft);font-size:0.98rem;}
+
+  /* ---------- Collection ---------- */
+  .collection{background:var(--ivory);}
+  .product-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:2px;
+    background:var(--line);
+    border:1px solid var(--line);
+  }
+  .product-card{
+    background:var(--ivory);
+    display:flex;
+    flex-direction:column;
+  }
+  .product-media{
+    position:relative;
+    aspect-ratio:3/4;
+    overflow:hidden;
+    background:var(--plum-deep);
+  }
+  .product-media img{
+    width:100%;height:100%;object-fit:cover;
+    transition:transform .7s var(--ease);
+  }
+  .product-card:hover .product-media img{transform:scale(1.045);}
+  .product-index{
+    position:absolute;top:18px;left:18px;
+    font-family:'Fraunces',serif;
+    font-style:italic;
+    color:var(--ivory);
+    font-size:0.85rem;
+    z-index:2;
+  }
+  .product-body{padding:26px 22px 30px;flex:1;display:flex;flex-direction:column;}
+  .product-body h3{font-size:1.25rem;font-weight:500;margin-bottom:8px;}
+  .product-notes{font-size:0.84rem;color:var(--ink-soft);letter-spacing:0.01em;margin-bottom:18px;}
+  .product-foot{
+    margin-top:auto;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding-top:16px;
+    border-top:1px solid var(--line);
+  }
+  .product-price{font-family:'Fraunces',serif;font-size:1.02rem;color:var(--plum-deep);}
+  .view-scent{
+    font-size:0.78rem;
+    font-weight:600;
+    letter-spacing:0.03em;
+    border-bottom:1px solid var(--plum-deep);
+    padding-bottom:2px;
+    transition:opacity .3s ease;
+  }
+  .view-scent:hover{opacity:0.6;}
+
+  /* ---------- Experience options ---------- */
+  .experience{background:var(--plum-deep);color:var(--ivory);}
+  .experience .section-head h2,.experience .section-head p{color:var(--ivory);}
+  .experience .section-head p{color:rgba(247,241,232,0.66);}
+  .exp-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:1px;
+    background:var(--line-on-dark);
+    border:1px solid var(--line-on-dark);
+  }
+  .exp-card{
+    background:var(--plum-deep);
+    padding:46px 34px;
+    display:flex;
+    flex-direction:column;
+    gap:22px;
+    transition:background .4s ease;
+  }
+  .exp-card:hover{background:var(--plum-mid);}
+  .exp-icon{width:34px;height:34px;}
+  .exp-icon svg{width:100%;height:100%;stroke:var(--dust-soft);fill:none;stroke-width:1.1;}
+  .exp-card h3{color:var(--ivory);font-size:1.3rem;font-weight:500;}
+  .exp-card p{color:rgba(247,241,232,0.66);font-size:0.94rem;max-width:30ch;}
+  .exp-card .exp-link{
+    margin-top:auto;
+    font-size:0.8rem;
+    font-weight:600;
+    color:var(--ivory);
+    border-bottom:1px solid rgba(247,241,232,0.4);
+    padding-bottom:3px;
+    align-self:flex-start;
+    transition:border-color .3s ease;
+  }
+  .exp-card .exp-link:hover{border-color:var(--ivory);}
+
+  /* ---------- About ---------- */
+  .about{background:var(--ivory-2);}
+  .about-grid{
+    display:grid;
+    grid-template-columns:0.9fr 1.1fr;
+    gap:6vw;
+    align-items:center;
+  }
+  .about-media{
+    aspect-ratio:5/6;
+    overflow:hidden;
+    border-radius:var(--radius);
+  }
+  .about-media img{width:100%;height:100%;object-fit:cover;}
+  .about-copy .eyebrow{margin-bottom:20px;display:block;}
+  .about-copy h2{font-size:clamp(2rem,3.6vw,2.9rem);font-weight:400;max-width:14ch;margin-bottom:26px;}
+  .about-copy p{color:var(--ink-soft);max-width:46ch;font-size:1.02rem;margin-bottom:18px;}
+  .about-signature{
+    margin-top:34px;
+    font-family:'Fraunces',serif;
+    font-style:italic;
+    font-size:1.1rem;
+    color:var(--plum-mid);
+  }
+
+  /* ---------- Discovery ---------- */
+  .discovery{background:var(--ivory);}
+  .family-row{
+    display:flex;
+    flex-wrap:wrap;
+    gap:14px;
+    margin-bottom:56px;
+  }
+  .family-pill{
+    padding:13px 26px;
+    border:1px solid var(--line);
+    border-radius:40px;
+    font-size:0.9rem;
+    font-weight:500;
+    color:var(--ink-soft);
+    background:transparent;
+    transition:border-color .3s ease,color .3s ease,background .3s ease;
+  }
+  .family-pill:hover{border-color:var(--plum-deep);color:var(--plum-deep);}
+  .family-pill.active{
+    background:var(--plum-deep);
+    border-color:var(--plum-deep);
+    color:var(--ivory);
+  }
+  .discovery-panel{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:5vw;
+    align-items:center;
+    padding:50px 0 0;
+    border-top:1px solid var(--line);
+  }
+  .discovery-panel h3{
+    font-size:2rem;
+    font-weight:400;
+    margin-bottom:18px;
+  }
+  .discovery-panel p{color:var(--ink-soft);max-width:42ch;margin-bottom:26px;}
+  .discovery-notes{display:flex;gap:10px;flex-wrap:wrap;}
+  .discovery-notes span{
+    font-size:0.78rem;
+    padding:8px 14px;
+    background:var(--ivory-2);
+    color:var(--ink-soft);
+    border-radius:20px;
+  }
+  .discovery-visual{
+    aspect-ratio:1/1;
+    border-radius:var(--radius);
+    overflow:hidden;
+    position:relative;
+  }
+  .discovery-visual img{width:100%;height:100%;object-fit:cover;transition:opacity .5s ease;}
+
+  /* ---------- Booking ---------- */
+  .booking{background:var(--plum-deep);color:var(--ivory);position:relative;}
+  .booking-grid{
+    display:grid;
+    grid-template-columns:0.85fr 1.15fr;
+    gap:6vw;
+  }
+  .booking-copy h2{color:var(--ivory);font-size:clamp(2rem,3.6vw,2.9rem);font-weight:400;max-width:12ch;}
+  .booking-copy p{color:rgba(247,241,232,0.66);margin-top:22px;max-width:36ch;font-size:1rem;}
+  .booking-copy .note{
+    margin-top:44px;
+    font-size:0.8rem;
+    color:rgba(247,241,232,0.5);
+    border-top:1px solid var(--line-on-dark);
+    padding-top:22px;
+  }
+  form.consult{display:flex;flex-direction:column;gap:22px;}
+  .form-row{display:grid;grid-template-columns:1fr 1fr;gap:22px;}
+  .field{display:flex;flex-direction:column;gap:10px;}
+  .field label{font-size:0.78rem;letter-spacing:0.04em;color:rgba(247,241,232,0.6);}
+  .field input,.field select,.field textarea{
+    background:transparent;
+    border:none;
+    border-bottom:1px solid var(--line-on-dark);
+    color:var(--ivory);
+    font-family:'Manrope',sans-serif;
+    font-size:0.98rem;
+    padding:10px 2px;
+    transition:border-color .3s ease;
+  }
+  .field select option{color:#111;}
+  .field input::placeholder,.field textarea::placeholder{color:rgba(247,241,232,0.32);}
+  .field input:focus,.field select:focus,.field textarea:focus{border-bottom-color:var(--dust-soft);outline:none;}
+  .field textarea{resize:vertical;min-height:70px;}
+  form.consult .btn{margin-top:8px;align-self:flex-start;}
+  .form-confirm{
+    display:none;
+    padding:22px 24px;
+    border:1px solid var(--line-on-dark);
+    border-radius:var(--radius);
+    font-size:0.94rem;
+    color:var(--dust-soft);
+  }
+  .form-confirm.show{display:block;}
+
+  /* ---------- Sample strip ---------- */
+  .sample-strip{
+    background:var(--dust-soft);
+  }
+  .sample-inner{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:2rem;
+    flex-wrap:wrap;
+    padding:56px 0;
+  }
+  .sample-inner h3{font-size:1.6rem;font-weight:400;max-width:24ch;}
+  .sample-inner p{color:var(--ink-soft);margin-top:6px;}
+
+  /* ---------- Order CTA ---------- */
+  .order{
+    background:var(--ivory-2);
+    text-align:center;
+  }
+  .order h2{font-size:clamp(2.1rem,4.4vw,3.2rem);font-weight:400;max-width:18ch;margin:0 auto 34px;}
+  .order-actions{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;}
+
+  /* ---------- Testimonials ---------- */
+  .testimonials{background:var(--ivory);}
+  .t-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:3vw;
+  }
+  .t-card{
+    padding-top:26px;
+    border-top:1px solid var(--line);
+  }
+  .t-card p{font-size:1.02rem;color:var(--plum-deep);font-family:'Fraunces',serif;font-weight:400;line-height:1.5;font-style:italic;}
+  .t-card .who{margin-top:22px;font-size:0.82rem;color:var(--ink-soft);font-family:'Manrope',sans-serif;font-style:normal;letter-spacing:0.02em;}
+
+  /* ---------- Footer ---------- */
+  footer{
+    background:var(--plum-deep);
+    color:rgba(247,241,232,0.7);
+    padding:80px 0 30px;
+  }
+  .footer-grid{
+    display:grid;
+    grid-template-columns:1.4fr 1fr 1fr;
+    gap:4vw;
+    padding-bottom:56px;
+    border-bottom:1px solid var(--line-on-dark);
+  }
+  .footer-brand{font-family:'Fraunces',serif;font-size:1.5rem;color:var(--ivory);letter-spacing:0.1em;}
+  .footer-brand + p{margin-top:14px;font-size:0.88rem;max-width:32ch;}
+  .footer-col h4{
+    font-family:'Manrope',sans-serif;
+    font-size:0.78rem;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:rgba(247,241,232,0.45);
+    margin-bottom:18px;
+    font-weight:600;
+  }
+  .footer-col a,.footer-col span{display:block;font-size:0.92rem;margin-bottom:12px;color:rgba(247,241,232,0.78);transition:color .3s ease;}
+  .footer-col a:hover{color:var(--ivory);}
+  .footer-bottom{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding-top:26px;
+    font-size:0.8rem;
+    color:rgba(247,241,232,0.42);
+    flex-wrap:wrap;
+    gap:10px;
+  }
+
+  /* ---------- Modal ---------- */
+  .modal-overlay{
+    position:fixed;inset:0;
+    background:rgba(42,21,36,0.6);
+    z-index:300;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    opacity:0;
+    pointer-events:none;
+    transition:opacity .35s ease;
+    padding:24px;
+  }
+  .modal-overlay.open{opacity:1;pointer-events:auto;}
+  .modal-box{
+    background:var(--ivory);
+    max-width:420px;
+    width:100%;
+    padding:46px 38px;
+    border-radius:var(--radius);
+    text-align:center;
+    transform:translateY(14px);
+    transition:transform .35s var(--ease);
+  }
+  .modal-overlay.open .modal-box{transform:translateY(0);}
+  .modal-box h3{font-size:1.5rem;font-weight:400;margin-bottom:14px;}
+  .modal-box p{color:var(--ink-soft);font-size:0.96rem;margin-bottom:28px;}
+
+  /* ---------- Responsive ---------- */
+  @media(max-width:1080px){
+    .product-grid{grid-template-columns:repeat(2,1fr);}
+    .exp-grid{grid-template-columns:1fr;}
+    .about-grid{grid-template-columns:1fr;}
+    .about-media{max-width:420px;margin:0 auto;}
+    .discovery-panel{grid-template-columns:1fr;}
+    .discovery-visual{order:-1;max-width:420px;margin:0 auto;}
+    .booking-grid{grid-template-columns:1fr;gap:3rem;}
+    .footer-grid{grid-template-columns:1fr 1fr;gap:2.4rem;}
+    .t-grid{grid-template-columns:1fr;gap:2.4rem;}
+  }
+
+  @media(max-width:860px){
+    nav.primary{display:none;}
+    .nav-right .btn{display:none;}
+    .hamburger{display:flex;}
+    .hero{padding:118px 0 60px;}
+    .hero-grid{grid-template-columns:1fr;gap:40px;}
+    .hero-visual{order:-1;aspect-ratio:5/4;}
+    .hero-stripe{gap:2rem;margin-top:48px;}
+    section{padding:72px 0;}
+    .section-head{margin-bottom:40px;}
+    .product-grid{grid-template-columns:1fr 1fr;}
+    .form-row{grid-template-columns:1fr;}
+    .footer-grid{grid-template-columns:1fr;gap:2.2rem;}
+    .sample-inner{text-align:left;}
+  }
+
+  @media(max-width:520px){
+    .wrap{padding:0 22px;}
+    .product-grid{grid-template-columns:1fr;}
+    .hero-actions .btn{width:100%;}
+    .hero-actions{flex-direction:column;}
+    .order-actions{flex-direction:column;width:100%;}
+    .order-actions .btn{width:100%;}
+  }
+</style>
+</head>
+<body>
+
+<header class="site" id="siteHeader">
+  <div class="wrap nav-inner">
+    <a href="#home" class="brand-mark">ÉLANE</a>
+    <nav class="primary">
+      <a href="#home">Home</a>
+      <a href="#collection">Collection</a>
+      <a href="#about">About</a>
+      <a href="#experience">Experience</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div class="nav-right">
+      <button class="btn btn-outline" data-book>Book Now</button>
+      <button class="hamburger" id="hamburgerBtn" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#home" class="mm-link">Home</a>
+  <a href="#collection" class="mm-link">Collection</a>
+  <a href="#about" class="mm-link">About</a>
+  <a href="#experience" class="mm-link">Experience</a>
+  <a href="#contact" class="mm-link">Contact</a>
+  <button class="btn btn-primary btn-wide" data-book>Book Now</button>
+</div>
+
+<main>
+
+  <section class="hero" id="home">
+    <div class="wrap hero-grid">
+      <div class="hero-copy reveal">
+        <span class="eyebrow">Fine Fragrance</span>
+        <h1>A fragrance that <em>stays</em><br>after you leave.</h1>
+        <p class="lead">Each ÉLANE fragrance is composed in small batches from rare naturals and modern accords, built to last in memory as long as it lasts on skin.</p>
+        <div class="hero-actions">
+          <a href="#collection" class="btn btn-primary">Explore Collection</a>
+          <button class="btn btn-outline" data-book>Book a Scent Consultation</button>
+        </div>
+        <div class="hero-stripe">
+          <div><strong>2014</strong>House founded in Grasse</div>
+          <div><strong>6</strong>Signature compositions</div>
+          <div><strong>100%</strong>Naturally derived base notes</div>
+        </div>
+      </div>
+      <div class="hero-visual reveal">
+        <img src="https://images.unsplash.com/photo-1760920250029-36af9369a0bb?auto=format&fit=crop&w=1000&q=80" alt="ÉLANE fragrance bottle, clear glass with a black cap, on a soft neutral surface" loading="eager">
+        <span class="tag">Élane Noir</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="collection" id="collection">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <h2>The collection</h2>
+        <p>Six fragrances, each built around a single dominant idea rather than a list of notes.</p>
+      </div>
+      <div class="product-grid reveal">
+
+        <article class="product-card">
+          <div class="product-media">
+            <span class="product-index">01</span>
+            <img src="https://images.unsplash.com/photo-1634944119598-837431c4900a?auto=format&fit=crop&w=700&q=80" alt="Élane Noir perfume bottle" loading="lazy">
+          </div>
+          <div class="product-body">
+            <h3>Élane Noir</h3>
+            <p class="product-notes">Velvet · Amber · Vanilla</p>
+            <div class="product-foot">
+              <span class="product-price">$185</span>
+              <button class="view-scent" data-view="Élane Noir">View Scent</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card">
+          <div class="product-media">
+            <span class="product-index">02</span>
+            <img src="https://images.unsplash.com/photo-1694422789021-54bd74b39f52?auto=format&fit=crop&w=700&q=80" alt="Rose Éclat perfume bottle" loading="lazy">
+          </div>
+          <div class="product-body">
+            <h3>Rose Éclat</h3>
+            <p class="product-notes">Rose · Peony · Musk</p>
+            <div class="product-foot">
+              <span class="product-price">$175</span>
+              <button class="view-scent" data-view="Rose Éclat">View Scent</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card">
+          <div class="product-media">
+            <span class="product-index">03</span>
+            <img src="https://images.unsplash.com/photo-1615634260167-c8cdede054de?auto=format&fit=crop&w=700&q=80" alt="Lune Blanche perfume bottle" loading="lazy">
+          </div>
+          <div class="product-body">
+            <h3>Lune Blanche</h3>
+            <p class="product-notes">Iris · White Musk · Sandalwood</p>
+            <div class="product-foot">
+              <span class="product-price">$195</span>
+              <button class="view-scent" data-view="Lune Blanche">View Scent</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card">
+          <div class="product-media">
+            <span class="product-index">04</span>
+            <img src="https://images.unsplash.com/photo-1760920250029-36af9369a0bb?auto=format&fit=crop&w=700&q=80" alt="Ambre Nuit perfume bottle" loading="lazy">
+          </div>
+          <div class="product-body">
+            <h3>Ambre Nuit</h3>
+            <p class="product-notes">Amber · Oud · Tonka</p>
+            <div class="product-foot">
+              <span class="product-price">$210</span>
+              <button class="view-scent" data-view="Ambre Nuit">View Scent</button>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="experience" id="experience">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <h2>Choose how you'd like to experience it</h2>
+        <p>There's no single right way to start with ÉLANE. Pick what fits you.</p>
+      </div>
+      <div class="exp-grid reveal">
+        <div class="exp-card">
+          <div class="exp-icon"><svg viewBox="0 0 40 40"><circle cx="20" cy="14" r="7"/><path d="M8 34c0-8 5-13 12-13s12 5 12 13"/></svg></div>
+          <h3>Book a Scent Experience</h3>
+          <p>A one-to-one consultation to find the composition that fits how you actually live.</p>
+          <button class="exp-link" data-book>Reserve a time</button>
+        </div>
+        <div class="exp-card">
+          <div class="exp-icon"><svg viewBox="0 0 40 40"><rect x="12" y="10" width="16" height="24" rx="2"/><path d="M16 10V6a4 4 0 0 1 8 0v4"/></svg></div>
+          <h3>Request a Sample</h3>
+          <p>Choose a fragrance from the collection and try it at home before you commit.</p>
+          <a class="exp-link" href="#sample-cta">Start a sample</a>
+        </div>
+        <div class="exp-card">
+          <div class="exp-icon"><svg viewBox="0 0 40 40"><path d="M8 14h24l-2 18H10L8 14z"/><path d="M14 14a6 6 0 0 1 12 0"/></svg></div>
+          <h3>Place an Order</h3>
+          <p>Already know your scent? Select your bottle and begin your order directly.</p>
+          <a class="exp-link" href="#order">Begin an order</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="about" id="about">
+    <div class="wrap about-grid">
+      <div class="about-media reveal">
+        <img src="https://images.unsplash.com/photo-1709662369957-0cbf9f8452fc?auto=format&fit=crop&w=900&q=80" alt="A perfumer carefully filling a glass bottle by hand in the ÉLANE atelier" loading="lazy">
+      </div>
+      <div class="about-copy reveal">
+        <span class="eyebrow">The house</span>
+        <h2>More than a fragrance.</h2>
+        <p>A scent is one of the only things that can put you back in a room you left years ago. We think about that every time we sit down to build a formula — not what it smells like on a card, but what it will mean to someone in five years.</p>
+        <p>Every ÉLANE fragrance is composed by hand in small batches, tested on skin rather than paper, and given time to settle before it's approved. We'd rather release one composition a year that means something than six that don't.</p>
+        <p>This isn't about being noticed. It's about being remembered.</p>
+        <p class="about-signature">— The ÉLANE atelier</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="discovery" id="discover">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <h2>Find the scent that feels like you.</h2>
+        <p>Start with a family. Everything else follows from there.</p>
+      </div>
+      <div class="family-row reveal" id="familyRow">
+        <button class="family-pill active" data-family="floral">Floral</button>
+        <button class="family-pill" data-family="woody">Woody</button>
+        <button class="family-pill" data-family="amber">Amber</button>
+        <button class="family-pill" data-family="fresh">Fresh</button>
+        <button class="family-pill" data-family="musky">Musky</button>
+      </div>
+      <div class="discovery-panel reveal">
+        <div>
+          <h3 id="famTitle">Floral</h3>
+          <p id="famDesc">Rose, peony and orange blossom, softened with musk so it never tips into sweet. Best worn when you want to feel put together without trying hard.</p>
+          <div class="discovery-notes" id="famNotes">
+            <span>Rose</span><span>Peony</span><span>Orange blossom</span><span>White musk</span>
+          </div>
+        </div>
+        <div class="discovery-visual">
+          <img id="famImg" src="https://images.unsplash.com/photo-1694422789021-54bd74b39f52?auto=format&fit=crop&w=800&q=80" alt="Fragrance family visual">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="booking" id="contact">
+    <div class="wrap booking-grid">
+      <div class="booking-copy reveal">
+        <h2>Let's find your signature.</h2>
+        <p>Tell us a little about what you're looking for and we'll set up a time to talk it through — in person, or over a call.</p>
+        <p class="note">This is a demonstration form for a client presentation. No information submitted here is sent or stored anywhere.</p>
+      </div>
+      <form class="consult reveal" id="consultForm">
+        <div class="form-row">
+          <div class="field">
+            <label for="fName">Name</label>
+            <input id="fName" type="text" placeholder="Your full name" required>
+          </div>
+          <div class="field">
+            <label for="fEmail">Email</label>
+            <input id="fEmail" type="email" placeholder="you@email.com" required>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="field">
+            <label for="fFrag">Preferred fragrance</label>
+            <select id="fFrag">
+              <option>No preference yet</option>
+              <option>Élane Noir</option>
+              <option>Rose Éclat</option>
+              <option>Lune Blanche</option>
+              <option>Ambre Nuit</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="fDate">Preferred date</label>
+            <input id="fDate" type="date">
+          </div>
+        </div>
+        <div class="field">
+          <label for="fMsg">Message</label>
+          <textarea id="fMsg" placeholder="Anything you'd like us to know beforehand"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Request Consultation</button>
+        <div class="form-confirm" id="formConfirm">Thank you. Your request has been received for this demo.</div>
+      </form>
+    </div>
+  </section>
+
+  <section class="sample-strip" id="sample-cta">
+    <div class="wrap sample-inner">
+      <div>
+        <h3>Not ready to commit to a full bottle?</h3>
+        <p>Start with a sample.</p>
+      </div>
+      <button class="btn btn-outline" data-book>Request a Sample</button>
+    </div>
+  </section>
+
+  <section class="order" id="order">
+    <div class="wrap">
+      <h2>Your next signature scent is waiting.</h2>
+      <div class="order-actions">
+        <button class="btn btn-primary" data-book>Place an Order</button>
+        <button class="btn btn-outline" data-book>Speak With Us</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="testimonials">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <h2>What people notice</h2>
+      </div>
+      <div class="t-grid reveal">
+        <div class="t-card">
+          <p>"The first spray felt familiar somehow. I've worn it almost every evening since."</p>
+          <div class="who">Amara</div>
+        </div>
+        <div class="t-card">
+          <p>"I've had three people ask what I'm wearing in the same week. That's never happened before."</p>
+          <div class="who">Theo</div>
+        </div>
+        <div class="t-card">
+          <p>"It doesn't announce itself. You only really notice it up close, which is exactly what I wanted."</p>
+          <div class="who">Priya</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand">ÉLANE</div>
+        <p>Fine Fragrance</p>
+      </div>
+      <div class="footer-col">
+        <h4>Explore</h4>
+        <a href="#collection">Collection</a>
+        <a href="#about">About</a>
+        <a href="#experience">Experience</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <span>Instagram — @elane.parfum</span>
+        <span>WhatsApp — +1 (000) 000 0000</span>
+        <span>hello@elane-parfum.com</span>
+      </div>
+    </div>
+    <div class="wrap footer-bottom" style="padding:0;">
+      <span>© 2026 ÉLANE. All rights reserved.</span>
+      <span>Site demo — not a live store.</span>
+    </div>
+  </div>
+</footer>
+
+<div class="modal-overlay" id="bookModal">
+  <div class="modal-box">
+    <h3>Booking experience coming soon.</h3>
+    <p>We're putting the finishing touches on live consultation booking. Thank you for your interest in ÉLANE.</p>
+    <button class="btn btn-primary" id="closeModal">Close</button>
+  </div>
+</div>
+
+<script>
+(function(){
+  // Header scroll state
+  var header = document.getElementById('siteHeader');
+  function onScroll(){
+    if(window.scrollY > 12){ header.classList.add('scrolled'); }
+    else{ header.classList.remove('scrolled'); }
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+
+  // Mobile menu
+  var hamburger = document.getElementById('hamburgerBtn');
+  var mobileMenu = document.getElementById('mobileMenu');
+  function closeMenu(){
+    mobileMenu.classList.remove('open');
+    hamburger.setAttribute('aria-expanded','false');
+  }
+  hamburger.addEventListener('click', function(){
+    var open = mobileMenu.classList.toggle('open');
+    hamburger.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+  document.querySelectorAll('.mm-link').forEach(function(a){
+    a.addEventListener('click', closeMenu);
+  });
+
+  // Reveal on scroll
+  var revealEls = document.querySelectorAll('.reveal');
+  if('IntersectionObserver' in window){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(entry.isIntersecting){
+          entry.target.classList.add('in');
+          io.unobserve(entry.target);
+        }
+      });
+    }, {threshold:0.15});
+    revealEls.forEach(function(el){ io.observe(el); });
+  } else {
+    revealEls.forEach(function(el){ el.classList.add('in'); });
+  }
+
+  // Booking modal
+  var modal = document.getElementById('bookModal');
+  function openModal(){ modal.classList.add('open'); document.body.style.overflow='hidden'; }
+  function closeModalFn(){ modal.classList.remove('open'); document.body.style.overflow=''; }
+  document.querySelectorAll('[data-book]').forEach(function(btn){
+    btn.addEventListener('click', function(e){
+      e.preventDefault();
+      closeMenu();
+      openModal();
+    });
+  });
+  document.getElementById('closeModal').addEventListener('click', closeModalFn);
+  modal.addEventListener('click', function(e){
+    if(e.target === modal){ closeModalFn(); }
+  });
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape'){ closeModalFn(); }
+  });
+
+  // View Scent buttons -> scroll to consultation with prefill
+  document.querySelectorAll('[data-view]').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var name = btn.getAttribute('data-view');
+      var select = document.getElementById('fFrag');
+      if(select){
+        for(var i=0;i<select.options.length;i++){
+          if(select.options[i].text === name){ select.selectedIndex = i; break; }
+        }
+      }
+      document.getElementById('contact').scrollIntoView({behavior:'smooth'});
+    });
+  });
+
+  // Consultation form (demo only, no submission)
+  var form = document.getElementById('consultForm');
+  var confirm = document.getElementById('formConfirm');
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    confirm.classList.add('show');
+    confirm.scrollIntoView({behavior:'smooth', block:'nearest'});
+  });
+
+  // Scent discovery families
+  var families = {
+    floral: {
+      title: 'Floral',
+      desc: 'Rose, peony and orange blossom, softened with musk so it never tips into sweet. Best worn when you want to feel put together without trying hard.',
+      notes: ['Rose','Peony','Orange blossom','White musk'],
+      img: 'https://images.unsplash.com/photo-1694422789021-54bd74b39f52?auto=format&fit=crop&w=800&q=80'
+    },
+    woody: {
+      title: 'Woody',
+      desc: 'Sandalwood and cedar at the center, kept warm rather than sharp. A quiet, grounded scent that reads the same at 8am and midnight.',
+      notes: ['Sandalwood','Cedar','Vetiver','Iris'],
+      img: 'https://images.unsplash.com/photo-1615634260167-c8cdede054de?auto=format&fit=crop&w=800&q=80'
+    },
+    amber: {
+      title: 'Amber',
+      desc: 'Deep, resinous, and built to last. Vanilla and tonka bean round off the edges so the warmth never feels heavy.',
+      notes: ['Amber','Vanilla','Tonka bean','Oud'],
+      img: 'https://images.unsplash.com/photo-1760920250029-36af9369a0bb?auto=format&fit=crop&w=800&q=80'
+    },
+    fresh: {
+      title: 'Fresh',
+      desc: 'Citrus and green notes up top, settling into something quieter underneath. Meant for daylight — an easy, everyday scent.',
+      notes: ['Bergamot','Green tea','Neroli','Musk'],
+      img: 'https://images.unsplash.com/photo-1634944119598-837431c4900a?auto=format&fit=crop&w=800&q=80'
+    },
+    musky: {
+      title: 'Musky',
+      desc: 'Soft and close to the skin rather than projecting outward. The kind of scent people notice only when they are near you.',
+      notes: ['White musk','Ambrette','Iris','Cashmere wood'],
+      img: 'https://images.unsplash.com/photo-1709662369957-0cbf9f8452fc?auto=format&fit=crop&w=800&q=80'
+    }
+  };
+  var pills = document.querySelectorAll('.family-pill');
+  var famTitle = document.getElementById('famTitle');
+  var famDesc = document.getElementById('famDesc');
+  var famNotes = document.getElementById('famNotes');
+  var famImg = document.getElementById('famImg');
+  pills.forEach(function(pill){
+    pill.addEventListener('click', function(){
+      pills.forEach(function(p){ p.classList.remove('active'); });
+      pill.classList.add('active');
+      var data = families[pill.getAttribute('data-family')];
+      famImg.style.opacity = 0;
+      setTimeout(function(){
+        famTitle.textContent = data.title;
+        famDesc.textContent = data.desc;
+        famNotes.innerHTML = data.notes.map(function(n){ return '<span>'+n+'</span>'; }).join('');
+        famImg.src = data.img;
+        famImg.style.opacity = 1;
+      }, 180);
+    });
+  });
+})();
+</script>
+
+</body>
+</html>
